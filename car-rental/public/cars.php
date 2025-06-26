@@ -72,8 +72,8 @@ $cars = $stmt->fetchAll();
       <label for="seats" class="form-label">Seats</label>
       <select id="seats" name="seats" class="form-select">
         <option value="">All</option>
-        <option value="5">5</option>
         <option value="4">4</option>
+        <option value="5">5</option>
         <option value="6">6</option>
         <option value="7">7</option>
       </select>
@@ -112,10 +112,5 @@ $cars = $stmt->fetchAll();
     </div>
   </div>
 </div>
-<script>
-  document.getElementById('filterForm').addEventListener('change', () => {
-    document.getElementById('filterForm').submit();
-  });
-</script>
 </body>
 </html>
