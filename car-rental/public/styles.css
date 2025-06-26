@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body { 
+  background-color: white; 
+}
+.card { 
+  border-radius: 1rem; 
+}
+.container{
+  text-align: center;
+}
+
+/* Login */
+.login {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px 0;
+}
+.login-header {
+  margin-bottom: 40px;
+}
+.login-text {
+  font-weight: bold;
+  color: #107e62;
+}
+
+/* Dashboard Styles */
+/* header */
+.header {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.header-pic {
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.header h2, .header p {
+  color: white;
+  text-align: center;
+  z-index: 10;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+.header p {
+  font-size: 1.2rem;
+}
+.car-display {
+  margin: 40px 30px;
+}
+.sub-title {
+  font-weight: bold;
+  color: #107e62;
+}
+
+/* car display */
+.car-scrollable {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+.car-item {
+  flex: 0 0 auto;
+  margin-right: 20px;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.car-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.distance {
+  color: #4caf50;
+  background-color: #e8f5e9;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.car-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  border: 2px solid #107e62;
+}
+
+/*why us*/
+.why-us {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px 0;
+}
+.why-us .sub-title {
+  margin-left: 30px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+.col-md-6 .col-text {
+  font-weight: bold;
+  color: #107e62;
+}
+.why-us .row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+@media (max-width: 1000px) {
+  .why-us .row {
+    flex-direction: column;
+  }
+  .why-us .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 10px 15px;
+  }
+  .why-us img {
+    margin-bottom: 1rem;
+  }
+}
+.why-us .col-md-6 {
+  flex: 0 0 50%;
+  max-width: 100%;
+  padding: 0 20px;
+}
+.why-us img {
+  width: 100%;
+  height: auto;
+}
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+  padding: 2rem 0;
+}
+.feature-item {
+  flex: 1 1 260px;
+  max-width: 300px;
+  background: #ffffff;
+  border: 1px solid #107e62;
+  border-radius: 10px;
+  padding: 0.5rem;
+  text-align: center;
+}
+.feature-item p {
+  margin: 0;
+  font-size: .95rem;
+  color: #555;
+}
+
+/* Footer Links Styles */
+/* Footer Links Styles */
+.footer-links {
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+
+.footer-links .container {
+  max-width: 1200px; /* Limit the maximum width of the container */
+}
+
+.footer-links h4 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.footer-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 5px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #343a40;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+
+/* Navbar Styles */
+/* Navigation Bar */
+.navbar {
+  background-color: #107e62;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+.navbar .container-fluid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.navbar .navbar-brand {
+  color: white;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.5rem;
+  margin-right: 400px;
+}
+.navbar .nav-item {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+.nav-item {
+  border-radius: 20%;
+}
+.navbar .nav-item:hover {
+  color: darkgray;
+}
+
+/*footer*/
+footer {
+  background-color: #0b493a;
+  color: white;
+  text-align: center;
+  padding: 1rem 0 0.2rem;
+}
