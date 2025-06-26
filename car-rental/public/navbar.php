@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_id'])) {
 <nav class="navbar">
     <div class="container-fluid">
       <a class="navbar-brand" href="dashboard.php"><b>CarRental</b></a>
-        <a class="nav-item" href="cars.php"><b>Cars View</b></a>
+        <a class="nav-item" href="cars.php"><b>View Cars</b></a>
         <a class="nav-item" href="bookings.php"><b>Cars Bookings</b></a>
         <a class="nav-item" href="logout.php">Logout</a>
     </div>
