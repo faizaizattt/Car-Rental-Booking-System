@@ -39,7 +39,7 @@ body {
   flex-direction: column;
 }
 .header-pic {
-    position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -61,15 +61,15 @@ body {
 .header p {
   font-size: 1.2rem;
 }
-.car-display {
-  margin: 40px 30px;
-}
 .sub-title {
   font-weight: bold;
   color: #107e62;
 }
 
 /* car display */
+.car-display {
+  margin: 40px 30px;
+}
 .car-scrollable {
   display: flex;
   overflow-x: auto;
@@ -103,6 +103,7 @@ body {
 }
 .book-btn {
   color: #4caf50;
+  border: 1px solid #4caf50;
 }
 
 /*why us*/

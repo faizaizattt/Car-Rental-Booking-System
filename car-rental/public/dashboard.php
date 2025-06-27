@@ -49,8 +49,6 @@ $cars = $stmt->fetchAll();
         <a href="bookings.php" class="book-btn">Book Now</a>
       </div>
     <?php endforeach; ?>
-    </div>
-    
   </div>
 </div>
 
