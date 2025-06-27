@@ -11,7 +11,6 @@ $isAdmin = $_SESSION['role'] === 'admin';
 // Retrieve filters from request
 $search = $_GET['search'] ?? '';
 $seats = $_GET['seats'] ?? '';
-$makeModel = $_GET['make_model'] ?? '';
 $sort = $_GET['sort'] ?? 'brand ASC';
 
 // Construct the SQL query with filters and sorting
@@ -25,9 +24,6 @@ if ($search) {
 if ($seats) {
     $sql .= " AND c.seats = :seats";
 }
-if ($makeModel) {
-    $sql .= " AND (c.brand LIKE :makeModel OR c.model LIKE :makeModel)";
-}
 
 $sql .= " ORDER BY $sort";
 
@@ -39,9 +35,6 @@ if ($search) {
 }
 if ($seats) {
     $stmt->bindValue(':seats', $seats);
-}
-if ($makeModel) {
-    $stmt->bindValue(':makeModel', "%$makeModel%");
 }
 
 $stmt->execute();
@@ -104,7 +97,7 @@ $cars = $stmt->fetchAll();
                 <strong>Price/Day:</strong> RM<?php echo number_format($car['price_per_day'], 2); ?><br>
                 <strong>Fuel Type:</strong> <?php echo htmlspecialchars($car['fuel_type']); ?>
               </p>
-              <a href="#" class="btn btn-success">Book Now</a>
+              <a href="bookings.php" class="btn btn-success">Book Now</a>
             </div>
           </div>
         </div>

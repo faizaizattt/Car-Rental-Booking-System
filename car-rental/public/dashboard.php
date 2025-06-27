@@ -4,6 +4,14 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit;
 }
+
+$sql = "SELECT c.id, c.brand, c.model, c.img_link, c.seats, c.price_per_day, fuel_type
+        FROM cars c 
+        WHERE 1";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$cars = $stmt->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,39 +37,20 @@ if (!isset($_SESSION['user_id'])) {
 <div class="car-display">
   <h2 class="sub-title">Available Car Rental Deals</h2>
   <div class="car-scrollable">
-    <div class="car-item">
-      <img src="https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682563435077-perodua%20myvi.png?alt=media&token=00a4c988-dadf-408a-a466-4ddf41e6c555" alt="Car Image" class="car-image">
-      <h3>Perodua Myvi</h3>
-      <p>starting from RM120.00 per day</p>
-      <p class="distance">0.2 KM away</p>
-      <p>Grand Paragon Hotel - Open Guest Parking, Johor Bahru</p>
+    <?php foreach ($cars as $car): ?>
+      <div class="car-item">
+        <img src="<?php echo htmlspecialchars($car['img_link']); ?>" alt="Car Image" class="car-image">
+        <h3><?php echo htmlspecialchars($car['brand'] . ' ' . $car['model']); ?></h3>
+        <p>starting from RM<?php echo number_format($car['price_per_day'], 2); ?> per day</p>
+        <p>
+          <strong>Seats:</strong> <?php echo htmlspecialchars($car['seats']); ?><br>
+          <strong>Fuel Type:</strong> <?php echo htmlspecialchars($car['fuel_type']); ?>
+        </p>
+        <a href="bookings.php" class="book-btn">Book Now</a>
+      </div>
+    <?php endforeach; ?>
     </div>
-    <div class="car-item">
-      <img src="https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682563181414-axia.png?alt=media&token=cd38fd1a-6b21-452f-a52a-c127b97f79bb" alt="Car Image" class="car-image">
-      <h3>Perodua Axia</h3>
-      <p>starting from RM100.00 per day</p>
-      <p class="distance">0.2 KM away</p>
-      <p>Grand Paragon Hotel - Open Guest Parking, Johor Bahru</p>
-    </div>
-    <div class="car-item">
-      <img src="https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682572137688-vios.png?alt=media&token=7f574425-51fb-4807-b889-903d9d92f385" alt="Car Image" class="car-image">
-      <h3>Toyota Vios</h3>
-      <p>starting from RM150.00 per day</p>
-      <p class="distance">0.2 KM away</p>
-      <p>Grand Paragon Hotel - Open Guest Parking, Johor Bahru</p>
-    </div><div class="car-item">
-      <img src="https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682562399723-captur.png?alt=media&token=8c161fd1-8d90-4348-9b02-974510d36d3c" alt="Car Image" class="car-image">
-      <h3>Renault Capture</h3>
-      <p>starting from RM320.00 per day</p>
-      <p class="distance">0.2 KM away</p>
-      <p>Grand Paragon Hotel - Open Guest Parking, Johor Bahru</p>
-    </div><div class="car-item">
-      <img src="https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682563901427-honda%20jazz.png?alt=media&token=d37db644-4074-4c3f-83db-c97332ca1fa6" alt="Car Image" class="car-image">
-      <h3>Honda Jazz</h3>
-      <p>starting from RM250.00 per day</p>
-      <p class="distance">0.2 KM away</p>
-      <p>Grand Paragon Hotel - Open Guest Parking, Johor Bahru</p>
-    </div>
+    
   </div>
 </div>
 
