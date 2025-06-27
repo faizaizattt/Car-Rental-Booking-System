@@ -56,51 +56,59 @@ $cars = $stmt->fetchAll();
 </div>
 <div class="container py-4">
   <h1>List of Cars</h1>
-  <form method="GET" id="filterForm" class="row g-3">
-    <div class="col-md-3">
-      <label for="search" class="form-label">Search</label>
-      <input type="text" id="search" name="search" class="form-control" placeholder="Search by brand or model">
-    </div>
-    <div class="col-md-2">
-      <label for="seats" class="form-label">Seats</label>
-      <select id="seats" name="seats" class="form-select">
-        <option value="">All</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-      </select>
-    </div>
-    <div class="col-md-2">
-      <label for="sort" class="form-label">Sort By</label>
-      <select id="sort" name="sort" class="form-select">
-        <option value="brand ASC">Brand (A-Z)</option>
-        <option value="price_per_day ASC">Price (Low-High)</option>
-      </select>
-    </div>
-    <div class="col-md-3">
-      <button type="submit" class="btn btn-success">Filter</button>
-    </div>
-  </form>
+  <div class="filter-form-container">
+    <form method="GET" id="filterForm" class="filter-form">
+      <div class="form-group">
+        <label for="search" class="form-label">Search</label>
+        <input type="text" id="search" name="search" class="form-input" placeholder="Search by brand or model">
+      </div>
+      <div class="form-group">
+        <label for="seats" class="form-label">Seats</label>
+        <select id="seats" name="seats" class="form-select">
+          <option value="">All</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="sort" class="form-label">Sort By</label>
+        <select id="sort" name="sort" class="form-select">
+          <option value="brand ASC">Brand (A-Z)</option>
+          <option value="price_per_day ASC">Price (Low-High)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn-filter">Filter</button>
+      </div>
+    </form>
+  </div>
 
-  <div class="mt-4">
-    <div class="row">
+  <div class="car-listing-container">
+    <div class="car-grid">
       <?php foreach ($cars as $car): ?>
-        <div class="col-md-6 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <img src="<?php echo htmlspecialchars($car['img_link']); ?>" class="card-img-top">
-              <h5 class="card-title">
-                <?php echo htmlspecialchars($car['brand'] . ' ' . $car['model']); ?></h5>
-              <p class="card-text">
-                <strong>Seats:</strong> <?php echo htmlspecialchars($car['seats']); ?><br>
-                <strong>Price/Day:</strong> RM<?php echo number_format($car['price_per_day'], 2); ?><br>
-                <strong>Fuel Type:</strong> <?php echo htmlspecialchars($car['fuel_type']); ?>
-              </p>
-              <div class="book-btn">
-                <a href="bookings.php" class="btn btn-success">Book Now</a>
-              </div>
-            </div>
+        <div class="car-card">
+          <div class="car-image-wrapper">
+            <img src="<?php echo htmlspecialchars($car['img_link']); ?>" 
+                alt="<?php echo htmlspecialchars($car['brand'] . ' ' . $car['model']); ?>" 
+                class="car-image">
+          </div>
+          
+          <div class="car-details">
+            <h3 class="car-title">
+              <?php echo htmlspecialchars($car['brand'] . ' ' . $car['model']); ?>
+            </h3>
+            
+            <ul class="car-specs">
+              <li><strong>Seats:</strong> <?php echo htmlspecialchars($car['seats']); ?></li>
+              <li><strong>Price/Day:</strong> RM<?php echo number_format($car['price_per_day'], 2); ?></li>
+              <li><strong>Fuel Type:</strong> <?php echo htmlspecialchars($car['fuel_type']); ?></li>
+            </ul>
+          </div>
+          
+          <div class="car-action">
+            <a href="bookings.php" class="book-now-btn">Book Now</a>
           </div>
         </div>
       <?php endforeach; ?>
