@@ -11,8 +11,8 @@ $sql = "SELECT c.id, c.brand, c.model, c.img_link, c.seats, c.price_per_day, fue
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $cars = $stmt->fetchAll();
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +29,7 @@ $cars = $stmt->fetchAll();
 </div>
 
 <div class="header">
-  <img src="images/Image2-view.jpg" alt="header image" class="header-pic">
+  <img src="images/Image2-view.jpg" alt="Header Image" class="header-pic">
   <h2>Welcome to CarRental</h2>
   <p>Need a car for your gateway or a quick trip in your area?
   <br>CarRental has everything you need to rent a car for your adventure trip.</p>
@@ -46,6 +46,8 @@ $cars = $stmt->fetchAll();
           <strong>Seats:</strong> <?php echo htmlspecialchars($car['seats']); ?><br>
           <strong>Fuel Type:</strong> <?php echo htmlspecialchars($car['fuel_type']); ?>
         </p>
+        <p class="distance">0.3 km</p>
+        <p><strong>Location:</strong> Student mall UTM, Skudai, Johor</p>
         <a href="bookings.php" class="book-btn">Book Now</a>
       </div>
     <?php endforeach; ?>

@@ -55,7 +55,7 @@ $cars = $stmt->fetchAll();
   <?php include 'navbar.php'; ?>
 </div>
 <div class="container py-4">
-  <h1>Available Cars</h1>
+  <h1>List of Cars</h1>
   <form method="GET" id="filterForm" class="row g-3">
     <div class="col-md-3">
       <label for="search" class="form-label">Search</label>
@@ -97,7 +97,9 @@ $cars = $stmt->fetchAll();
                 <strong>Price/Day:</strong> RM<?php echo number_format($car['price_per_day'], 2); ?><br>
                 <strong>Fuel Type:</strong> <?php echo htmlspecialchars($car['fuel_type']); ?>
               </p>
-              <a href="bookings.php" class="btn btn-success">Book Now</a>
+              <div class="book-btn">
+                <a href="bookings.php" class="btn btn-success">Book Now</a>
+              </div>
             </div>
           </div>
         </div>
@@ -105,5 +107,6 @@ $cars = $stmt->fetchAll();
     </div>
   </div>
 </div>
+<?php include 'footer.php'; ?>
 </body>
 </html>
