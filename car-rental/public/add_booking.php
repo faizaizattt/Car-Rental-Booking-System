@@ -4,6 +4,14 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit;
 }
+if (isset($_GET['car_id'])) {
+    $car_id = $_GET['car_id'];
+    $stmt = $pdo->prepare("SELECT * FROM cars WHERE id = :id");
+    $stmt->bindValue(':id', $car_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $car = $stmt->fetch();
+}
+
 
 // Load available cars only
 $cars = $pdo->query("SELECT id,brand,model,price_per_day FROM cars WHERE status='available'")->fetchAll();

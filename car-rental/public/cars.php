@@ -101,14 +101,14 @@ $cars = $stmt->fetchAll();
             </h3>
             
             <ul class="car-specs">
-              <li><strong>Seats:</strong> <?php echo htmlspecialchars($car['seats']); ?></li>
+              <li><strong>Seats:</strong> <?php echo htmlspecialchars($car['seats']); ?> people</li>
               <li><strong>Price/Day:</strong> RM<?php echo number_format($car['price_per_day'], 2); ?></li>
               <li><strong>Fuel Type:</strong> <?php echo htmlspecialchars($car['fuel_type']); ?></li>
             </ul>
           </div>
           
           <div class="car-action">
-            <a href="bookings.php" class="book-now-btn">Book Now</a>
+            <a href="car_details.php?id=<?php echo $car['id']; ?>" class="book-now-btn">Book Now</a>
           </div>
         </div>
       <?php endforeach; ?>

@@ -4,6 +4,14 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit;
 }
+if (isset($_GET['car_id'])) {
+    $car_id = $_GET['car_id'];
+    $stmt = $pdo->prepare("SELECT * FROM cars WHERE id = :id");
+    $stmt->bindValue(':id', $car_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $car = $stmt->fetch();
+}
+
 $isAdmin = $_SESSION['role']==='admin';
 $uid = $_SESSION['user_id'];
 $sql = 'SELECT b.*, c.brand, c.model FROM bookings b JOIN cars c ON c.id = b.car_id';
@@ -24,7 +32,7 @@ $bookings = $stmt->fetchAll();
 <?php include 'navbar.php'; ?>
 <div class="container py-4">
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Bookings</h2>
+    <h2>Your Bookings</h2>
     <a href="add_booking.php" class="btn btn-sm btn-primary">+ Add Booking</a>
   </div>
   <table class="table table-bordered table-sm">

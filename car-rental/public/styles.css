@@ -235,6 +235,13 @@ body {
 .footer-links a:hover {
   text-decoration: underline;
 }
+/*footer*/
+footer {
+  background-color: #0b493a;
+  color: white;
+  text-align: center;
+  padding: 1rem 0 0.2rem;
+}
 
 
 /* Navbar Styles */
@@ -270,15 +277,6 @@ body {
 .navbar .nav-item:hover {
   color: darkgray;
 }
-
-/*footer*/
-footer {
-  background-color: #0b493a;
-  color: white;
-  text-align: center;
-  padding: 1rem 0 0.2rem;
-}
-
 
 /* List of Cars */
 /* Filter Form Container */
@@ -409,14 +407,12 @@ footer {
   padding: 1.5rem;
   flex-grow: 1;
 }
-
 .car-title {
   font-size: 1.4rem;
   font-weight: 700;
   color: #107e62;
   margin-bottom: 1rem;
 }
-
 .car-specs {
   list-style: none;
   padding: 0;
@@ -424,19 +420,16 @@ footer {
   color: #555;
   line-height: 1.6;
 }
-
 .car-specs li {
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
 }
-
 /* Action Button (Centered) */
 .car-action {
   padding: 0 1.5rem 1.5rem;
   display: flex;
   justify-content: center;
 }
-
 .book-now-btn {
   display: inline-block;
   background: #107e62;
@@ -451,24 +444,20 @@ footer {
   cursor: pointer;
   min-width: 180px;
 }
-
 .book-now-btn:hover {
   background: #0d5a46;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(16, 126, 98, 0.3);
 }
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .car-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
-  
   .car-title {
     font-size: 1.2rem;
   }
 }
-
 @media (max-width: 480px) {
   .car-grid {
     grid-template-columns: 1fr;
@@ -482,4 +471,50 @@ footer {
     min-width: 150px;
     padding: 0.7rem 1.5rem;
   }
+}
+
+/* Car Details Page */
+/* car_details.css */
+.car-details-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.car-details-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  border: 2px solid whitesmoke;
+}
+.car-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px 0 0 12px;
+}
+.car-info-list .list-group-item {
+  font-size: 1rem;
+  border: none;
+  padding: 10px 20px;
+}
+.car-info-list .list-group-item strong {
+  width: 130px;
+  display: inline-block;
+  color: #333;
+}
+.list-group {
+  text-align: left;
+  margin-left: 30px;
+}
+.card-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #107e62;
+  text-align: center;
+}
+.image-section {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
 }
