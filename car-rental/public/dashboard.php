@@ -84,51 +84,7 @@ $cars = $stmt->fetchAll();
     </div>
   </div>
 </div>
-<div class="footer-links">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <h4>More information</h4>
-        <ul>
-          <li><a>Contact Us</a></li>
-          <li><a>Print Invoice Copy</a></li>
-          <li><a>Find a Rental Location</a></li>
-          <li><a>Call Us</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <h4>Business center</h4>
-        <ul>
-          <li><a>Corporate Account</a></li>
-          <li><a>Affiliate</a></li>
-          <li><a>Our Operators</a></li>
-          <li><a>Travel Agents</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <h4>CarRental Mobility Group</h4>
-        <ul>
-          <li><a>CarRental Rent a Car</a></li>
-          <li><a>Goldcar</a></li>
-          <li><a>CarRental On Demand</a></li>
-          <li><a>Careers</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <h4>Legal Information</h4>
-        <ul>
-          <li><a>Terms and Conditions</a></li>
-          <li><a>Deposit Policy</a></li>
-          <li><a>Privacy Policy</a></li>
-          <li><a>Damage Management Policy</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<footer>
-  <p>© CarRental Mobility Sdn Bhd 2025</p>
-</footer>
+  <?php include 'footer.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
