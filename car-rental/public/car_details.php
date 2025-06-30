@@ -35,7 +35,7 @@ if (!$car) {
 <?php include 'navbar.php'; ?>
 
 <div class="container py-5">
-    <h1 class="mb-4">Book Now</h1>
+<h1 class="mb-4">Book Now</h1>
   <div class="card car-details-card shadow-lg">
     <div class="row g-0">
       <div class="col-md-6 image-section">

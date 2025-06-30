@@ -518,3 +518,12 @@ footer {
   justify-content: center;
   background-color: white;
 }
+
+/* Add booking */
+/* save and cancle button */
+.btn-sv-cncl {
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
