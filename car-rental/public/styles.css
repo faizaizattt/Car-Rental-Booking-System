@@ -527,3 +527,52 @@ footer {
   justify-content: center;
   column-gap: 20px;
 }
+
+/* Bookings page */
+    .booking-card {
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      padding: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .booking-card img {
+      width: 150px;
+      height: auto;
+      border-radius: 8px;
+      margin-right: 20px;
+      margin-left: 80px;
+      object-fit: contain;
+    }
+    .booking-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .booking-info h5 {
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .booking-status {
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 10px;
+      align-self: flex-start;
+    }
+    .status-completed {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .status-pending {
+      background-color: #ffeeba;
+      color: #856404;
+    }
+    .booking-actions {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0 10px 0;
+      padding: 0 5px 0 550px;
+    }
