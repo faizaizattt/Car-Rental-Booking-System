@@ -47,7 +47,7 @@ if (!$user) {
   
   <!-- Center content using flex -->
   <div class="d-flex align-items-center justify-content-center min-vh-100">
-    <div class="container" style="max-width: 600px;">
+    <div class="container" style="max-width: 600px; margin: 40px 0 40px;">
       <h2 class="mb-4 text-center">Your Profile</h2>
       <div class="card shadow p-4">
         <p><strong>Name:</strong> <?php echo htmlspecialchars($user['name']); ?></p>
@@ -95,7 +95,7 @@ if (!$user) {
       </div>
     </div>
   </div>
-
+  <?php include 'footer.php'; ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

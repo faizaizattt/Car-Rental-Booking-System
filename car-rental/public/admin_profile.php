@@ -48,12 +48,12 @@ if (!$user) {
 
         <!-- Edit Profile Button -->
         <div class="mt-3">
-          <a href="edit_profile.php" class="btn btn-primary w-100">Edit Profile</a>
+          <a href="edit_profile.php" class="btn btn-success w-100">Edit Profile</a>
         </div>
 
         <!-- Change Password Button -->
         <div class="mt-3">
-          <a href="change_password.php" class="btn btn-warning w-100">Change Password</a>
+          <a href="change_password.php" class="btn btn-success w-100">Change Password</a>
         </div>
 
         <!-- Logout Button -->
@@ -63,6 +63,7 @@ if (!$user) {
       </div>
     </div>
   </div>
+  <?php include 'footer.php'; ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
