@@ -41,7 +41,8 @@ CREATE TABLE bookings (
 
 -- Sample admin user (password = admin123)
 INSERT INTO users (name, email, password_hash, role)
-VALUES ('Admin User', 'admin@example.com', MD5('admin123'), 'admin');
+VALUES ('Admin User', 'admin@example.com', MD5('admin123'), 'admin'),
+('Barbarian King', 'barbarian@gmail.com', MD5('123456'), 'customer');
 
 
 INSERT INTO cars (brand, model, img_link, price_per_day, seats, fuel_type, status) VALUES

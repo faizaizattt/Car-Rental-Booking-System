@@ -5,7 +5,6 @@ if (isset($_SESSION['user_id'])) {
     exit;
 }
 ?>
-<!-- Optional HTML: Login prompt or redirect to login -->
 
 <!DOCTYPE html>
 <html lang="en">
