@@ -1,20 +1,25 @@
 <?php
 require_once '../config/config.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name  = trim($_POST['name'] ?? '');
     $email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
     $pass  = $_POST['password'] ?? '';
 
+    // Basic validation
     if (!$name || !$email || strlen($pass) < 6) {
         $_SESSION['flash'] = 'Invalid input — please try again.';
         header('Location: register.php');
         exit;
     }
 
-    $hash = password_hash($pass, PASSWORD_DEFAULT);
-    $stmt = $pdo->prepare('INSERT INTO users (name,email,password_hash) VALUES (?,?,?)');
+    // Use md5 for hashing (NOT recommended for real apps)
+    $hash = md5($pass);
+
+    // Default role will be 'customer'
+    $stmt = $pdo->prepare('INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)');
     try {
-        $stmt->execute([$name,$email,$hash]);
+        $stmt->execute([$name, $email, $hash]);
         $_SESSION['flash'] = 'Registration successful — please log in.';
         header('Location: index.php');
     } catch (PDOException $e) {
@@ -24,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

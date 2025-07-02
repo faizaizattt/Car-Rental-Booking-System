@@ -1,13 +1,17 @@
 <?php
 require_once '../config/config.php';
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit;
 }
 
+$role = $_SESSION['role'] ?? 'customer';
+$name = $_SESSION['name'] ?? '';
+
+// Get car list (for both roles)
 $sql = "SELECT c.id, c.brand, c.model, c.img_link, c.seats, c.price_per_day, fuel_type
-        FROM cars c 
-        WHERE 1";
+        FROM cars c";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $cars = $stmt->fetchAll();

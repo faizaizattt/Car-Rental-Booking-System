@@ -1,20 +1,47 @@
 <?php
 require_once '../config/config.php';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
-    $pass  = $_POST['password'] ?? '';
 
-    $stmt = $pdo->prepare('SELECT id,password_hash,role FROM users WHERE email = ?');
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
-    if ($user && password_verify($pass, $user['password_hash'])) {
+    // Use MD5 for password check
+    if ($user && md5($password) === $user['password_hash']) {
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['role'] = $user['role'];
+        $_SESSION['name'] = $user['name'];
+        $_SESSION['role'] = $user['role']; // 'admin' or 'customer'
+
+        // Redirect both to the same dashboard
         header('Location: dashboard.php');
+        exit;
     } else {
-        $_SESSION['flash'] = 'Invalid email or password.';
-        header('Location: index.php');
+        $error = 'Invalid email or password';
     }
-    exit;
 }
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+<h2>Login</h2>
+<?php if ($error): ?>
+<p style="color:red"><?= htmlspecialchars($error) ?></p>
+<?php endif; ?>
+<form method="post">
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br><br>
+    <button type="submit">Login</button>
+</form>
+</body>
+</html>
