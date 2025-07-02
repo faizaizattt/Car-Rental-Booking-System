@@ -55,8 +55,6 @@ $cars = $stmt->fetchAll();
           <strong>Seats:</strong> <?php echo htmlspecialchars($car['seats']); ?> people<br>
           <strong>Fuel Type:</strong> <?php echo htmlspecialchars($car['fuel_type']); ?>
         </p>
-        <p class="distance">0.3 km</p>
-        <p><strong>Location:</strong> Student mall UTM, Skudai, Johor</p>
         <a href="car_details.php?id=<?php echo $car['id']; ?>" class="book-now-btn">Book Now</a>
       </div>
     <?php endforeach; ?>

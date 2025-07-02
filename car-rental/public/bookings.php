@@ -28,44 +28,6 @@ $bookings = $stmt->fetchAll();
   <title><?= $isAdmin ? 'All Bookings' : 'Your Bookings' ?></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
-  <style>
-    .booking-card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-    .booking-card img {
-      width: 150px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-    .booking-info {
-      flex-grow: 1;
-    }
-    .booking-actions {
-      margin-top: 10px;
-    }
-    .booking-status {
-      font-weight: bold;
-      padding: 6px 12px;
-      border-radius: 20px;
-      text-align: center;
-      width: 100px;
-    }
-    .status-pending {
-      background-color: #fff3cd;
-      color: #856404;
-    }
-    .status-completed {
-      background-color: #d4edda;
-      color: #155724;
-    }
-  </style>
 </head>
 <body>
 <?php include 'navbar.php'; ?>
