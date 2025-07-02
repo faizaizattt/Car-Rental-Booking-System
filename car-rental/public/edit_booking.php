@@ -31,7 +31,7 @@ if (!$car) {
 }
 
 // Fetch all available cars
-$stmt = $pdo->prepare("SELECT * FROM cars");
+$stmt = $pdo->prepare("SELECT * FROM cars WHERE status = 'available'");
 $stmt->execute();
 $cars = $stmt->fetchAll();
 
