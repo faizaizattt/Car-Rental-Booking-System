@@ -21,6 +21,8 @@ if (!$car) {
     echo "Car not found.";
     exit;
 }
+
+$isAdmin = $_SESSION['role'] === 'admin';
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,7 @@ if (!$car) {
 <?php include 'navbar.php'; ?>
 
 <div class="container py-5">
-<h1 class="mb-4">Book Now</h1>
+  <h1 class="mb-4">Car Details</h1>
   <div class="card car-details-card shadow-lg">
     <div class="row g-0">
       <div class="col-md-6 image-section">
@@ -49,10 +51,14 @@ if (!$car) {
             <li class="list-group-item"><strong>Brand:</strong> <?php echo htmlspecialchars($car['brand']); ?></li>
             <li class="list-group-item"><strong>Seats:</strong> <?php echo htmlspecialchars($car['seats']); ?> people</li>
             <li class="list-group-item"><strong>Fuel Type:</strong> <?php echo htmlspecialchars($car['fuel_type']); ?></li>
-            <li class="list-group-item"><strong>Price per Day:</strong> RM<?php echo number_format($car['price_per_day'], 2); ?></span></li>
+            <li class="list-group-item"><strong>Price per Day:</strong> RM<?php echo number_format($car['price_per_day'], 2); ?></li>
           </ul>
           <div class="mt-4 text-center">
-            <a href="add_booking.php?car_id=<?php echo $car['id']; ?>" class="book-now-btn">Proceed to Booking</a>
+            <?php if ($isAdmin): ?>
+              <a href="cars.php" class="btn btn-secondary">Back to Car List</a>
+            <?php else: ?>
+              <a href="add_booking.php?car_id=<?php echo $car['id']; ?>" class="book-now-btn">Proceed to Booking</a>
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -63,3 +69,4 @@ if (!$car) {
 <?php include 'footer.php'; ?>
 </body>
 </html>
+
