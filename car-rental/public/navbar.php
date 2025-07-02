@@ -29,6 +29,8 @@ if (!isset($_SESSION['user_id'])) {
     <a class="navbar-brand" href="dashboard.php"><b>CarRental</b></a>
     <a class="nav-item" href="cars.php"><b>View Cars</b></a>
     <a class="nav-item" href="bookings.php"><b>Bookings</b></a>
+    <a class="nav-item" href="feedback.php"><b>Feedback</b></a>
+
 
     <!-- Profile Icon Link -->
     <a class="nav-item" href="profile.php">
