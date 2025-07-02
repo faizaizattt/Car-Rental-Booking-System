@@ -576,3 +576,72 @@ footer {
   margin: 5px 0 10px 0;
   padding: 0 5px 0 550px;
 }
+
+    /* car admin */
+    /* General Layout */
+.card-body .btn-info {
+    margin-right: 5px;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+.card-body .btn-info {
+    margin-right: 5px;
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+.btn-info, .btn-warning {
+    color: white;
+    background-color: #107e62;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.btn-info:hover, .btn-warning:hover {
+    color: white;
+    background-color: #08352a;
+    border: none;
+}
+.btn-sm:active {
+    color: white;
+    background-color: #08352a;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+/* Form Styling */
+form input[type="text"],
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+form button[type="submit"] {
+    background-color: #107e62;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    margin: 20px 0 12px 0;
+}
+form button[type="submit"]:hover {
+    background-color: #0a2d24;
+    
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
