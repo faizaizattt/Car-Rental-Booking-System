@@ -33,8 +33,58 @@ $cars = $stmt->fetchAll();
 </div>
 <div>
 <?php if ($_SESSION['role'] == 'admin') {?>
-      		<!-- For Admin -->
-<h2>This is admin</h2>
+<?php
+// Count users
+$userStmt = $pdo->query("SELECT COUNT(*) FROM users");
+$totalUsers = $userStmt->fetchColumn();
+
+// Count cars
+$carStmt = $pdo->query("SELECT COUNT(*) FROM cars");
+$totalCars = $carStmt->fetchColumn();
+
+// Count bookings
+$bookingStmt = $pdo->query("SELECT COUNT(*) FROM bookings");
+$totalBookings = $bookingStmt->fetchColumn();
+?>
+
+<div class="container mt-5">
+  <h2>Admin Dashboard</h2>
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <a href="users.php" class="text-decoration-none">
+        <div class="card text-white bg-primary mb-3">
+          <div class="card-body">
+            <h5 class="card-title text-white">Total Users</h5>
+            <p class="card-text fs-3 text-white"><?= $totalUsers ?></p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="cars.php" class="text-decoration-none">
+        <div class="card text-white bg-success mb-3">
+          <div class="card-body">
+            <h5 class="card-title text-white">Total Cars</h5>
+            <p class="card-text fs-3 text-white"><?= $totalCars ?></p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="bookings.php" class="text-decoration-none">
+        <div class="card text-white bg-warning mb-3">
+          <div class="card-body">
+            <h5 class="card-title text-white">Total Bookings</h5>
+            <p class="card-text fs-3 text-white"><?= $totalBookings ?></p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="text-end">
+    <a href="report.php" class="btn btn-dark">Generate Report</a>
+  </div>
+</div>
       	<?php } else { ?>
 
 <div class="header">
