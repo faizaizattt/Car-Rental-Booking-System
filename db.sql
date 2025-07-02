@@ -60,3 +60,13 @@ INSERT INTO cars (brand, model, img_link, price_per_day, seats, fuel_type, statu
 ('Perodua', 'Axia', 'https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682563181414-axia.png?alt=media&token=cd38fd1a-6b21-452f-a52a-c127b97f79bba', 100.00, 5, 'Petrol', 'available'),
 ('Toyota', 'Vios', 'https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682572137688-vios.png?alt=media&token=7f574425-51fb-4807-b889-903d9d92f385', 150.00, 5 ,'Petrol', 'available'),
 ('Renault', 'Capture', 'https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682562399723-captur.png?alt=media&token=8c161fd1-8d90-4348-9b02-974510d36d3c', 320.00, 5, 'Diesel', 'available');
+
+-- Sample booking lists
+INSERT INTO bookings (user_id, car_id, start_date, end_date, total_cost, status) VALUES 
+(2, 1, 2025-06-27, 2025-06-28, 240.00, 'pending'),
+(2, 3, 2025-07-01, 2025-07-02, 300.00, 'pending');
+
+-- Sample feedback list
+INSERT INTO feedback (user_id, feedback_text, rating) VALUES 
+(2, 'Great service and clean car. Will book again!', 5),
+(2, 'Good experience overall. Slightly higher than expected price.', 4);
