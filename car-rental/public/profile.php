@@ -5,6 +5,12 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// ✅ Redirect admin to their own profile page
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+    header('Location: admin_profile.php');
+    exit;
+}
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit;
@@ -89,7 +95,7 @@ if (!$user) {
       </div>
     </div>
   </div>
-<?php include 'footer.php'; ?>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
