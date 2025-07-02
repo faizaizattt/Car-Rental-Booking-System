@@ -1,10 +1,27 @@
 <?php
+session_start();
 require_once '../config/config.php';
+
+// Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit;
 }
 
+$user_id = $_SESSION['user_id'];
+
+// ✅ License check: must upload license image
+$stmt = $pdo->prepare("SELECT license_image FROM users WHERE id = ?");
+$stmt->execute([$user_id]);
+$user = $stmt->fetch();
+
+if (!$user || empty($user['license_image'])) {
+    $_SESSION['flash'] = '❌ You must upload your license before making a booking.';
+    header('Location: profile.php');
+    exit;
+}
+
+// ✅ Car availability check
 $car = null;
 if (isset($_GET['car_id'])) {
     $car_id = (int)$_GET['car_id'];
@@ -24,6 +41,7 @@ if (isset($_GET['car_id'])) {
     exit;
 }
 
+// ✅ Booking submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $car_id = (int)$_POST['car_id'];
     $start = $_POST['start_date'];
@@ -42,7 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $total = $days * $price;
 
     $stmt = $pdo->prepare('INSERT INTO bookings (user_id, car_id, start_date, end_date, total_cost, status) VALUES (?, ?, ?, ?, ?, ?)');
-    $stmt->execute([$_SESSION['user_id'], $car_id, $start, $end, $total, 'pending']);
+    $stmt->execute([$user_id, $car_id, $start, $end, $total, 'pending']);
+
     header('Location: bookings.php');
     exit;
 }
@@ -62,29 +81,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="container py-4">
     <h1 class="mb-4">Add Booking</h1>
 
-  <form method="post" class="row g-3">
-    <input type="hidden" name="car_id" value="<?php echo $car['id']; ?>">
+    <form method="post" class="row g-3">
+      <input type="hidden" name="car_id" value="<?php echo $car['id']; ?>">
 
-    <div class="col-md-6">
-      <label class="form-label">Car</label>
-      <input type="text" class="form-control" value="<?php echo htmlspecialchars($car['brand'] . ' ' . $car['model']); ?>" disabled>
-    </div>
+      <div class="col-md-6">
+        <label class="form-label">Car</label>
+        <input type="text" class="form-control" value="<?php echo htmlspecialchars($car['brand'] . ' ' . $car['model']); ?>" disabled>
+      </div>
 
-    <div class="col-md-3">
-      <label class="form-label">Start Date</label>
-      <input name="start_date" type="date" class="form-control" required>
-    </div>
+      <div class="col-md-3">
+        <label class="form-label">Start Date</label>
+        <input name="start_date" type="date" class="form-control" required>
+      </div>
 
-    <div class="col-md-3">
-      <label class="form-label">End Date</label>
-      <input name="end_date" type="date" class="form-control" required>
-    </div>
+      <div class="col-md-3">
+        <label class="form-label">End Date</label>
+        <input name="end_date" type="date" class="form-control" required>
+      </div>
 
-    <div class="btn-sv-cncl">
-      <button class="btn btn-success">Save</button>
-      <a href="cars.php" class="btn btn-secondary">Cancel</a>
-    </div>
-  </form>
+      <div class="btn-sv-cncl">
+        <button class="btn btn-success">Save</button>
+        <a href="cars.php" class="btn btn-secondary">Cancel</a>
+      </div>
+    </form>
   </div>
   <?php include 'footer.php'; ?>
 </body>
