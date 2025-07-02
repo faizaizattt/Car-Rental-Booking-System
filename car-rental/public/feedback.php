@@ -98,8 +98,15 @@ if ($role === 'admin') {
         </form>
     <?php else: ?>
         <?php if (count($feedbackList) > 0): ?>
-            <table class="table table-bordered">
-                <thead>
+            <style>
+                .star-cell-admin {
+                    color: gold;
+                    font-size: 1.5rem;
+                    letter-spacing: 2px;
+                }
+            </style>
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
                     <tr>
                         <th>Customer Name</th>
                         <th>Rating</th>
@@ -111,7 +118,7 @@ if ($role === 'admin') {
                     <?php foreach ($feedbackList as $feedback): ?>
                         <tr>
                             <td><?= htmlspecialchars($feedback['name']) ?></td>
-                            <td>
+                            <td class="star-cell-admin">
                                 <?php for ($i = 1; $i <= 5; $i++): ?>
                                     <?= $i <= $feedback['rating'] ? "&#9733;" : "&#9734;" ?>
                                 <?php endfor; ?>
