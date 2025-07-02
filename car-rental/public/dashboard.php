@@ -11,7 +11,8 @@ $name = $_SESSION['name'] ?? '';
 
 // Get car list (for both roles)
 $sql = "SELECT c.id, c.brand, c.model, c.img_link, c.seats, c.price_per_day, fuel_type
-        FROM cars c";
+        FROM cars c
+        WHERE c.status = 'available'";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $cars = $stmt->fetchAll();

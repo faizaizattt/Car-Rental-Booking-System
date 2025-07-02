@@ -1,5 +1,8 @@
 <?php
 require_once '../config/config.php';
-session_unset();
+session_start();
 session_destroy();
-header('Location: index.php');
+
+setcookie("user_email", "", time() - 3600, "/"); // unset the cookie
+
+header("Location: index.php");

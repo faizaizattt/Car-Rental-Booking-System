@@ -13,7 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['name'] = $user['name'];
         $_SESSION['role'] = $user['role'];
-        header('Location: dashboard.php');
+        if (isset($_POST['remember'])) {
+            setcookie("user_email", $email, time() + (86400 * 7), "/"); // valid for 7 days
+        }
+        $_SESSION['welcome'] = "Welcome back, " . $user['email'] . "!";
+        header('Location: index.php');
         exit;
     } else {
         $_SESSION['flash'] = 'Invalid email or password';
@@ -21,6 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 } ?>
+<?php if (isset($_COOKIE['user_email'])): ?>
+    <p class="text-center mt-3">Welcome back, <?php echo htmlspecialchars($_COOKIE['user_email']); ?>!</p>
+<?php endif; ?>
 
 <!DOCTYPE html>
 <html>
@@ -28,16 +35,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login</title>
 </head>
 <body>
-<h2>Login</h2>
-<?php if ($error): ?>
-<p style="color:red"><?= htmlspecialchars($error) ?></p>
-<?php endif; ?>
-<form method="post">
-    <label>Email:</label><br>
-    <input type="email" name="email" required><br><br>
-    <label>Password:</label><br>
-    <input type="password" name="password" required><br><br>
-    <button type="submit">Login</button>
-</form>
 </body>
 </html>
