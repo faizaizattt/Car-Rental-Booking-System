@@ -1,5 +1,5 @@
 <?php
-// Update these to match your local DB credentials
+
 $host = 'localhost';
 $db   = 'car_rental';
 $user = 'root';

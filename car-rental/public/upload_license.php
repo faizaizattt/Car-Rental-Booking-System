@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['license'])) {
 
     if (in_array($imageFileType, $valid_types)) {
         if (move_uploaded_file($_FILES["license"]["tmp_name"], $target_file)) {
-            // ✅ Save image and consider user approved
             $stmt = $pdo->prepare("UPDATE users SET license_image = ? WHERE id = ?");
             $stmt->execute([$target_file, $user_id]);
             header("Location: profile.php?upload=success");

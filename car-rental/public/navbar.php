@@ -41,8 +41,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : 'customer';
       <a class="nav-item" href="bookings.php"><b>My Bookings</b></a>
       <a class="nav-item" href="feedback.php"><b>Feedback</b></a>
     <?php endif; ?>
-
-    <!-- Profile Icon Link -->
+    
     <a class="nav-item" href="profile.php">
       <img src="images/profile-icon.jpeg" alt="Profile" class="profile-icon">
     </a>

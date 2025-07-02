@@ -576,9 +576,8 @@ footer {
   margin: 5px 0 10px 0;
   padding: 0 5px 0 550px;
 }
-
-    /* car admin */
-    /* General Layout */
+/* car admin */
+/* General Layout */
 .card-body .btn-info {
     margin-right: 5px;
     padding: 5px 10px;
@@ -589,7 +588,6 @@ footer {
     padding: 6px 10px;
     font-size: 14px;
 }
-
 .btn-info, .btn-warning {
     color: white;
     background-color: #107e62;
@@ -607,12 +605,10 @@ footer {
     background-color: #08352a;
     border: none;
 }
-
 .btn-danger {
     background-color: #dc3545;
     border: none;
 }
-
 /* Form Styling */
 form input[type="text"],
 form input[type="number"],
@@ -623,7 +619,6 @@ form select {
     border: 1px solid #ccc;
     border-radius: 6px;
 }
-
 form button[type="submit"] {
     background-color: #107e62;
     color: white;
@@ -637,17 +632,51 @@ form button[type="submit"]:hover {
     background-color: #0a2d24;
     
 }
-
 .card-img-top {
     width: 100%;
     height: auto;
     border-radius: 6px;
     margin-bottom: 12px;
 }
-
 /* Confirmation Page */
 .confirmation-container {
 padding: 40px;
 background-color: #f0f2f5;
 text-align: center;
+}
+
+/* Receipt Page */
+.receipt-container {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 40px;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.details {
+  margin: 20px 0;
+}
+.details p {
+  margin: 6px 0;
+}
+.print-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+}
+.print-btn:hover {
+  background-color: #218838;
 }

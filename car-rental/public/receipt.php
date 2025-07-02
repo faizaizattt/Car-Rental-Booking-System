@@ -1,8 +1,5 @@
 <?php
-// receipt.php
 require_once '../config/config.php';
-// session_start();
-
 // Check user login
 if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
@@ -37,47 +34,6 @@ $transactionId = strtoupper(uniqid('TXN'));
 <html>
 <head>
     <title>Receipt - Car Rental</title>
-    <style>
-        /* body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f6fa;
-            padding: 40px;
-        } */
-        .receipt-container {
-            max-width: 600px;
-            margin: auto;
-            margin-top: 40px;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px #ccc;
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .details {
-            margin: 20px 0;
-        }
-        .details p {
-            margin: 6px 0;
-        }
-        .print-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            text-align: center;
-            font-size: 16px;
-        }
-        .print-btn:hover {
-            background-color: #218838;
-        }
-    </style>
 </head>
 <body>
 <?php include 'navbar.php'; ?>

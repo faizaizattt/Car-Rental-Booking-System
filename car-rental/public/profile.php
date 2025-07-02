@@ -4,8 +4,6 @@ require_once '../config/config.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-// ✅ Redirect admin to their own profile page
 if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
     header('Location: admin_profile.php');
     exit;
