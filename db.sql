@@ -39,6 +39,16 @@ CREATE TABLE bookings (
   FOREIGN KEY (car_id)  REFERENCES cars(id)  ON DELETE CASCADE
 );
 
+--Feedback
+CREATE TABLE feedback (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    feedback_text TEXT NOT NULL,
+    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
 -- Sample admin user (password = admin123)
 INSERT INTO users (name, email, password_hash, role)
 VALUES ('Admin User', 'admin@example.com', MD5('admin123'), 'admin'),
