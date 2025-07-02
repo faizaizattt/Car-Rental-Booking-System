@@ -27,6 +27,11 @@ $cars = $stmt->fetchAll();
 <div>
   <?php include 'navbar.php'; ?>
 </div>
+<div>
+<?php if ($_SESSION['role'] == 'admin') {?>
+      		<!-- For Admin -->
+<h2>This is admin</h2>
+      	<?php } else { ?>
 
 <div class="header">
   <img src="images/Image2-view.jpg" alt="Header Image" class="header-pic">
@@ -84,6 +89,8 @@ $cars = $stmt->fetchAll();
     </div>
   </div>
 </div>
+ <?php } ?>
+  </div>
   <?php include 'footer.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

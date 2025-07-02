@@ -37,6 +37,14 @@ if (isset($_SESSION['user_id'])) {
             <div class="mb-3">
                 <input type="password" name="password" class="form-control" placeholder="Password" required>
             </div>
+            <div class="mb-3">
+                <label for="role" class="form-label">User Role</label>
+                <select name="role" id="role" class="form-control" required>
+                    <option value="">Select Role</option>
+                    <option value="customer">Customer</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
             <button class="btn btn-success w-100">Login</button>
             <p class="mt-3 text-center small">No account?
                 <a href="register.php">Register</a>
