@@ -9,7 +9,9 @@ CREATE TABLE users (
   email VARCHAR(100) NOT NULL UNIQUE,
   password_hash VARCHAR(255) NOT NULL,
   role ENUM('customer','admin') DEFAULT 'customer',
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  license_image VARCHAR(255),
+  license_approved BOOLEAN DEFAULT FALSE
 );
 
 -- Cars
@@ -39,7 +41,7 @@ CREATE TABLE bookings (
   FOREIGN KEY (car_id)  REFERENCES cars(id)  ON DELETE CASCADE
 );
 
---Feedback
+-- Feedback
 CREATE TABLE feedback (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
