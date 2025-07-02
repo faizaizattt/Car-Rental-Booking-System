@@ -13,15 +13,28 @@ if (!isset($_SESSION['user_id'])) {
   <title>Navigation Bar - Car Rental</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
+  <style>
+    .profile-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-left: 15px;
+    }
+  </style>
 </head>
 <body>
 <nav class="navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="dashboard.php"><b>CarRental</b></a>
-        <a class="nav-item" href="cars.php"><b>View Cars</b></a>
-        <a class="nav-item" href="bookings.php"><b>Bookings</b></a>
-        <a class="nav-item" href="logout.php">Logout</a>
-    </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="dashboard.php"><b>CarRental</b></a>
+    <a class="nav-item" href="cars.php"><b>View Cars</b></a>
+    <a class="nav-item" href="bookings.php"><b>Bookings</b></a>
+
+    <!-- Profile Icon Link -->
+    <a class="nav-item" href="profile.php">
+      <img src="images/profile.png" alt="Profile" class="profile-icon">
+    </a>
+  </div>
 </nav>
 </body>
 </html>
