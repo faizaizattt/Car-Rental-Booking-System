@@ -44,7 +44,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : 'customer';
 
     <!-- Profile Icon Link -->
     <a class="nav-item" href="profile.php">
-      <img src="images/profile.png" alt="Profile" class="profile-icon">
+      <img src="images/profile-icon.jpeg" alt="Profile" class="profile-icon">
     </a>
   </div>
 </nav>
