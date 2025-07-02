@@ -24,17 +24,27 @@ if (!isset($_SESSION['user_id'])) {
   </style>
 </head>
 <body>
+<?php
+// Assume $_SESSION['role'] is set to 'admin' or 'customer'
+$role = isset($_SESSION['role']) ? $_SESSION['role'] : 'customer';
+?>
 <nav class="navbar">
   <div class="container-fluid">
     <a class="navbar-brand" href="dashboard.php"><b>CarRental</b></a>
-    <a class="nav-item" href="cars.php"><b>View Cars</b></a>
-    <a class="nav-item" href="bookings.php"><b>Bookings</b></a>
-    <a class="nav-item" href="feedback.php"><b>Feedback</b></a>
-
+    <?php if ($role === 'admin'): ?>
+      <a class="nav-item" href="users.php"><b>Manage Users</b></a>
+      <a class="nav-item" href="cars.php"><b>Manage Cars</b></a>
+      <a class="nav-item" href="bookings.php"><b>All Bookings</b></a>
+      <a class="nav-item" href="feedback.php"><b>View Feedback</b></a>
+    <?php else: ?>
+      <a class="nav-item" href="cars.php"><b>View Cars</b></a>
+      <a class="nav-item" href="bookings.php"><b>My Bookings</b></a>
+      <a class="nav-item" href="feedback.php"><b>Feedback</b></a>
+    <?php endif; ?>
 
     <!-- Profile Icon Link -->
     <a class="nav-item" href="profile.php">
-      <img src="images/profile-icon.jpeg" alt="Profile" class="profile-icon">
+      <img src="images/profile.png" alt="Profile" class="profile-icon">
     </a>
   </div>
 </nav>
