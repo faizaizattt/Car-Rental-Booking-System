@@ -40,10 +40,9 @@ CREATE TABLE bookings (
 );
 
 -- Sample admin user (password = admin123)
-INSERT INTO users (name,email,password_hash,role) VALUES
-('Administrator','admin@carrental.com',
-  '$2y$10$XkFtgZalEV2/6gnFQd7ZVe2mV2/kvB0y4gixxk2rUOeJSk3CIfCqa',
-  'admin');
+INSERT INTO users (name, email, password_hash, role)
+VALUES ('Admin User', 'admin@example.com', MD5('admin123'), 'admin');
+
 
 INSERT INTO cars (brand, model, img_link, price_per_day, seats, fuel_type, status) VALUES
 ('Perodua', 'Myvi', 'https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682563435077-perodua%20myvi.png?alt=media&token=00a4c988-dadf-408a-a466-4ddf41e6c555', 120.00, 5, 'Petrol', 'available'),
