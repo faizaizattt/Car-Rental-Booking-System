@@ -66,10 +66,12 @@ $bookings = $stmt->fetchAll();
 
           <?php if (!$isAdmin): ?>
             <div class="booking-actions">
-              <a href="edit_booking.php?id=<?= $b['id']; ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
-              <a href="delete_booking.php?id=<?= $b['id']; ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Cancel this booking?');">Cancel</a>
               <?php if ($b['status'] === 'pending'): ?>
+                <a href="edit_booking.php?id=<?= $b['id']; ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
                 <a href="payment.php?booking_id=<?= $b['id']; ?>" class="btn btn-sm btn-success">Pay Now</a>
+                <a href="delete_booking.php?id=<?= $b['id']; ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Cancel this booking?');">Cancel</a>
+              <?php elseif ($b['status'] === 'confirmed'): ?>
+                <a href="receipt.php?booking_id=<?= $b['id']; ?>" class="btn btn-sm btn-primary">View Receipt</a>
               <?php endif; ?>
             </div>
           <?php endif; ?>

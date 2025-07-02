@@ -1,19 +1,43 @@
 <?php
 // payment.php
+require_once '../config/config.php';
 
-// Start session if not already started
 // session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: index.php');
+    exit;
+}
 
-// Sample data (replace with actual session or GET/POST data)
-$carName = $_SESSION['car_name'] ?? 'Toyota Vios';
-$pickupDate = $_SESSION['pickup_date'] ?? '2025-07-05';
-$returnDate = $_SESSION['return_date'] ?? '2025-07-07';
-$totalPrice = $_SESSION['total_price'] ?? 320.00;
+$userId = $_SESSION['user_id'];
 
+// Validate booking_id
+if (!isset($_GET['booking_id']) || !is_numeric($_GET['booking_id'])) {
+    die('Invalid booking ID.');
+}
+
+$bookingId = (int)$_GET['booking_id'];
+
+// Load booking data
+$sql = 'SELECT b.*, c.brand, c.model FROM bookings b 
+        JOIN cars c ON c.id = b.car_id
+        WHERE b.id = ? AND b.user_id = ?';
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$bookingId, $userId]);
+$booking = $stmt->fetch();
+
+if (!$booking) {
+    die('Booking not found.');
+}
+
+// If form submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // In a real system, here you'd validate and process the payment.
-    // For now, just redirect to a confirmation page
-    header('Location: confirmation.php?success=1');
+    // Normally, process payment here
+    // Update booking status to confirmed
+    $update = $pdo->prepare('UPDATE bookings SET status = "confirmed" WHERE id = ?');
+    $update->execute([$bookingId]);
+
+    // Redirect to receipt page
+    header('Location: receipt.php?booking_id=' . $bookingId);
     exit();
 }
 ?>
@@ -21,72 +45,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Payment Page - Car Rental</title>
-    <style>
-        /* .container {
-            font-family: Arial;
-            background-color: #f0f2f5;
-            padding: 40px;
-        } */
-        .payment-container {
-            max-width: 1000px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px #ccc;
-            margin-top: 40px;
-        }
-        .payment-container h2 {
-            text-align: center;
-        }
-        input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin: 12px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-        button {
-            background-color: #0d5a46;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        .summary {
-            margin-bottom: 20px;
-        }
-    </style>
+    <title>Payment - Car Rental</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <?php include 'navbar.php'; ?>
-<div class="payment-container">
-    <h2>Confirm and Pay</h2>
-    <div class="summary">
-        <p><strong>Car:</strong> <?= htmlspecialchars($carName) ?></p>
-        <p><strong>Pickup Date:</strong> <?= htmlspecialchars($pickupDate) ?></p>
-        <p><strong>Return Date:</strong> <?= htmlspecialchars($returnDate) ?></p>
-        <p><strong>Total Price:</strong> RM <?= number_format($totalPrice, 2) ?></p>
+
+<div class="container py-5">
+    <h2>Confirm Payment</h2>
+
+    <div class="card mb-4">
+        <div class="text-start">
+            <div class="card-body">
+                <h5><?php echo htmlspecialchars($booking['brand'] . ' ' . $booking['model']); ?></h5>
+                <p><strong>Pick-Up:</strong> <?php echo date('D, j M Y', strtotime($booking['start_date'])); ?></p>
+                <p><strong>Drop-Off:</strong> <?php echo date('D, j M Y', strtotime($booking['end_date'])); ?></p>
+                <p><strong>Total:</strong> RM<?php echo number_format($booking['total_cost'], 2); ?></p>
+            </div>
+
+        </div>
     </div>
 
     <form method="POST">
-        <label>Cardholder Name</label>
-        <input type="text" name="card_name" required>
-
-        <label>Card Number</label>
-        <input type="text" name="card_number" maxlength="16" required>
-
-        <label>Expiry Date (MM/YY)</label>
-        <input type="text" name="expiry_date" placeholder="MM/YY" required>
-
-        <label>CVV</label>
-        <input type="number" name="cvv" maxlength="3" required>
-
-        <button type="submit">Pay Now</button>
+        <div class="text-start">
+            <div class="mb-3">
+                <label>Cardholder Name</label>
+                <input type="text" name="card_name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Card Number</label>
+                <input type="text" name="card_number" class="form-control" required maxlength="16">
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label>Expiry Date (MM/YY)</label>
+                    <input type="text" name="expiry" class="form-control" required placeholder="MM/YY">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>CVV</label>
+                    <input type="text" name="cvv" class="form-control" required maxlength="3">
+                </div>
+            </div>
+            <button class="btn btn-success" type="submit">Pay Now</button>
+        </div>
     </form>
 </div>
+
 <?php include 'footer.php'; ?>
 </body>
 </html>
