@@ -39,7 +39,7 @@ CREATE TABLE bookings (
   FOREIGN KEY (car_id)  REFERENCES cars(id)  ON DELETE CASCADE
 );
 
---Feedback
+-- Feedback
 CREATE TABLE feedback (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
