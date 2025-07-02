@@ -46,4 +46,6 @@ VALUES ('Admin User', 'admin@example.com', MD5('admin123'), 'admin');
 
 INSERT INTO cars (brand, model, img_link, price_per_day, seats, fuel_type, status) VALUES
 ('Perodua', 'Myvi', 'https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682563435077-perodua%20myvi.png?alt=media&token=00a4c988-dadf-408a-a466-4ddf41e6c555', 120.00, 5, 'Petrol', 'available'),
-('Perodua', 'Axia', 'https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682563181414-axia.png?alt=media&token=cd38fd1a-6b21-452f-a52a-c127b97f79bba', 100.00, 5, 'Petrol', 'available');
+('Perodua', 'Axia', 'https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682563181414-axia.png?alt=media&token=cd38fd1a-6b21-452f-a52a-c127b97f79bba', 100.00, 5, 'Petrol', 'available'),
+('Toyota', 'Vios', 'https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682572137688-vios.png?alt=media&token=7f574425-51fb-4807-b889-903d9d92f385', 150.00, 5 ,'Petrol', 'available'),
+('Renault', 'Capture', 'https://firebasestorage.googleapis.com/v0/b/fir-app-2c3a2.appspot.com/o/car_type%2F1682562399723-captur.png?alt=media&token=8c161fd1-8d90-4348-9b02-974510d36d3c', 320.00, 5, 'Diesel', 'available');
