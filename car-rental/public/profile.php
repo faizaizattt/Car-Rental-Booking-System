@@ -55,12 +55,12 @@ if (!$user) {
 
         <!-- Edit Profile Button -->
         <div class="mt-3">
-          <a href="edit_profile.php" class="btn btn-primary w-100">Edit Profile</a>
+          <a href="edit_profile.php" class="btn btn-success w-100">Edit Profile</a>
         </div>
 
         <!-- Change Password Button -->
         <div class="mt-3">
-          <a href="change_password.php" class="btn btn-warning w-100">Change Password</a>
+          <a href="change_password.php" class="btn btn-success w-100">Change Password</a>
         </div>
 
         <!-- License Upload Section -->

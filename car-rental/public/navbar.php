@@ -34,7 +34,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <!-- Profile Icon Link -->
     <a class="nav-item" href="profile.php">
-      <img src="images/profile.png" alt="Profile" class="profile-icon">
+      <img src="images/profile-icon.jpeg" alt="Profile" class="profile-icon">
     </a>
   </div>
 </nav>

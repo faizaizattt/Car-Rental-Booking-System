@@ -71,7 +71,7 @@ $bookings = $stmt->fetchAll();
                 <a href="payment.php?booking_id=<?= $b['id']; ?>" class="btn btn-sm btn-success">Pay Now</a>
                 <a href="delete_booking.php?id=<?= $b['id']; ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Cancel this booking?');">Cancel</a>
               <?php elseif ($b['status'] === 'confirmed'): ?>
-                <a href="receipt.php?booking_id=<?= $b['id']; ?>" class="btn btn-sm btn-primary">View Receipt</a>
+                <a href="receipt.php?booking_id=<?= $b['id']; ?>" class="btn btn-sm btn-success">View Receipt</a>
               <?php endif; ?>
             </div>
           <?php endif; ?>

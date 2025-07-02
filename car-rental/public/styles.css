@@ -645,3 +645,9 @@ form button[type="submit"]:hover {
     margin-bottom: 12px;
 }
 
+/* Confirmation Page */
+.confirmation-container {
+padding: 40px;
+background-color: #f0f2f5;
+text-align: center;
+}

@@ -64,12 +64,7 @@ $cars = $stmt->fetchAll();
 <?php include 'navbar.php'; ?>
 
 <div class="container py-4">
-  <h1>List of Cars</h1>
-
-  <?php if ($isAdmin): ?>
-    <a href="add_car.php" class="btn btn-success mb-3">+ Add New Car</a>
-  <?php endif; ?>
-
+  <h2>List of Cars</h2>
   <!-- Filter Form -->
   <form method="GET" class="row g-3 mb-4">
     <div class="col-md-3">
@@ -109,6 +104,11 @@ $cars = $stmt->fetchAll();
 
     <div class="col-md-2 d-flex align-items-end">
       <button type="submit" class="btn btn-primary">Apply</button>
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+      <?php if ($isAdmin): ?>
+        <a href="add_car.php" class="btn btn-success mb-3">+ Add New Car</a>
+      <?php endif; ?>
     </div>
   </form>
 
